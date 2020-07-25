@@ -14,8 +14,8 @@
     justify-content: center;
     align-items: center;
 }
-.imgSection>img{
-    background-color: white;
+.authimg{
+    background-color: hsl(0, 0%, 100%);
     padding: 20px;
     border-radius: 50px;
     box-shadow: 10px 10px 10px rgb(50, 0, 200),
