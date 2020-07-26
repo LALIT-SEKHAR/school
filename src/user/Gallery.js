@@ -1,14 +1,12 @@
 import React from 'react';
-import Header from '../common/Header';
-import Footer from '../common/Footer';
+import Base from '../Base';
 
-
-function Gallery(props) {
+const Gallery = () => {
     return (
         <div>
-            <Header/>
-            <h1>Gallery</h1>
-            <Footer/>
+            <Base>
+                <h1>Gallery</h1>
+            </Base>
         </div>
     );
 }

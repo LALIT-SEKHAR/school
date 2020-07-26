@@ -1,14 +1,12 @@
 import React from 'react';
-import Header from '../common/Header';
-import Footer from '../common/Footer';
+import Base from '../Base';
 
-
-function About(props) {
+const About = () => {
     return (
         <div>
-            <Header/>
-            <h1>About</h1>
-            <Footer/>
+            <Base>
+                <h1>About</h1>
+            </Base>
         </div>
     );
 }

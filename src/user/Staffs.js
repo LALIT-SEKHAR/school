@@ -1,13 +1,12 @@
 import React from 'react';
-import Header from '../common/Header';
-import Footer from '../common/Footer';
+import Base from '../Base';
 
-function Staffs(props) {
+const Staffs = () => {
     return (
         <div>
-            <Header/>
-            <h1>Staffs</h1>
-            <Footer/>
+            <Base>
+                <h1>Staffs</h1>
+            </Base>
         </div>
     );
 }

@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../css/Header.css'
+import { Link , withRouter} from 'react-router-dom';
+import './css/Header.css'
 
-const Header =  () => {
-
+const Header =  ({history}) => {
+    
     const [menu, setmenu] = useState(window.innerWidth<=800 ? false : true);
+    
+    const currentTab = (history, path) => {
+        if (history.location.pathname === path) {
+            return {color: '#4000FF'}
+        } else {
+            return {color: '#707070'}
+        }
+    }
 
     return (
         <header>
@@ -18,12 +26,12 @@ const Header =  () => {
                     <li>
                         <nav className='menubaritem' style={menu ? {display: 'contents'} : {display: 'none'}}>
                             <ul className='menubaritems'>
-                                <li><Link className="links" to='/'>home</Link></li>
-                                <li><Link className="links" to='/staffs'>staffs</Link></li>
-                                <li><Link className="links" to='/students'>students</Link></li>
-                                <li><Link className="links" to='/gallery'>gallery</Link></li>
-                                <li><Link className="links" to='/about'>about</Link></li>
-                                <li><Link className="links" to='/contact'>contact</Link></li>
+                                <li><Link style={currentTab(history, '/')} className="links" to='/'>home</Link></li>
+                                <li><Link style={currentTab(history, '/staffs')} className="links" to='/staffs'>staffs</Link></li>
+                                <li><Link style={currentTab(history, '/students')} className="links" to='/students'>students</Link></li>
+                                <li><Link style={currentTab(history, '/gallery')} className="links" to='/gallery'>gallery</Link></li>
+                                <li><Link style={currentTab(history, '/about')} className="links" to='/about'>about</Link></li>
+                                <li><Link style={currentTab(history, '/contact')} className="links" to='/contact'>contact</Link></li>
                             </ul>
                         </nav>
                     </li>
@@ -32,4 +40,4 @@ const Header =  () => {
     );
 };
 
-export default Header;
+export default withRouter(Header);

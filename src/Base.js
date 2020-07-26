@@ -3,14 +3,14 @@ import './App.css';
 import Header from './common/Header';
 import Footer from './common/Footer';
 
-function Home() {
+function Base({children}) {
   return (
     <div className="App">
       <Header/>
-      <h1>home page</h1>
+      {children}
       <Footer/>
     </div>
   );
 }
 
-export default Home;
+export default Base;

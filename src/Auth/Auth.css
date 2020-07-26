@@ -30,6 +30,7 @@
     padding: 20px;
     box-shadow: 10px 10px 10px rgb(180, 180, 180),
                 -10px -10px 10px rgb(255, 255, 255);
+    border: 10px solid rgb(230, 230, 230);
     border-radius: 20px;
     width: 300px;
 }

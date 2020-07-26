@@ -1,14 +1,12 @@
 import React from 'react';
-import Header from '../common/Header';
-import Footer from '../common/Footer';
+import Base from '../Base';
 
-
-function Contact(props) {
+const Contact = () => {
     return (
         <div>
-            <Header/>
-            <h1>Contact</h1>
-            <Footer/>
+            <Base>
+                <h1>Contact</h1>
+            </Base>
         </div>
     );
 }

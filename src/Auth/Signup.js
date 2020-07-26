@@ -11,6 +11,7 @@ const Signup = () => {
         password: '',
         isLoadimg: false,
         dataResived: false,
+        isSuccess: undefined,
         datasubmitedSuccessfull:{backgroundColor:'#ffffff'},
     });
 
@@ -18,19 +19,20 @@ const Signup = () => {
         setvalue({...value, [e.target.name] : e.target.value})
     }
 
-    // const submitStatusSign = {
-    //     // border:'3px solid red',
-    //     datasubmitedSuccessfull 
-    //     ? 
-    //     backgroundColor:'#ff6c6c' 
-    //     : 
-    //     backgroundColor:'#6aff6a'
-    // }
+    const submitresult = (status) => {
+        if (status) {
+            return {backgroundColor:'#7eff85'}
+        } else if(status === false) {
+            return {backgroundColor:'#fc7979'}
+        } else {
+            return {backgroundColor:''}
+        }
+    }
 
     return (
         <div className='authSection'>
             <div className="imgSection">
-                <img style={value.datasubmitedSuccessfull} src="favicon.png" alt="Logo"/>
+                <img style={submitresult(value.isSuccess)} className="authimg" src="favicon.png" alt="Logo"/>
             </div>
             <div className="inputSection">
                 <form className="authForm">
@@ -66,27 +68,32 @@ const Signup = () => {
                         <Link className="chengAuthLink" to="/signin">
                             already a user?
                         </Link>
-                        <button onClick={async(e) => {
+                        <button onClick={(e) => {
                             e.preventDefault();
                             const {name, email, password} = value
                             if ( name !== '' && email !== '' && password !== '' ) {
                                 setvalue({...value,dataResived: true})
-                                await signup({name,email,password})
+                                signup({name,email,password})
                                 .then((res)=>{
                                     if (res.error) {
-                                        return console.log("ERROR: ",res);
+                                        setvalue({
+                                            ...value,
+                                            password:'',
+                                            isSuccess: false,
+                                        })
                                     } else {
-                                        return setvalue({
+                                        setvalue({
+                                            ...value,
                                             name:'',
                                             email:'',
                                             password:'',
+                                            isSuccess: true,
                                         })
                                     }
                                 })
                                 .catch((err)=>{console.log("ERROR in SIGNUP",err)})
                                 setvalue({...value,dataResived: false})
                             }
-                            // console.log(name); 
                         }} className="authSubmit"
                         >
                             {value.dataResived ? 'submiting..' : 'submit'}
