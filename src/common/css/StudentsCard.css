@@ -1,0 +1,76 @@
+.Scard-holder{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 320px;
+    width: 250px;
+}
+.Simg-holder{
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+.Scircle-one{
+    transform: translateY(40%);
+    background-color: aqua;
+    border-radius: 100%;
+    /* background-clip: ; */
+}
+.Scircle-two{
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    overflow: hidden;
+    /* background-color: teal; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: thin;
+ 
+}
+.Simg-holder img{
+    width: 100%;
+    height: auto;
+    transform: rotate(-45deg);
+    transform: scale(1.4);
+    z-index: 5;
+}
+.Sdata-holder{
+    width: 100%;
+    height: 70%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    background-image: linear-gradient(to bottom,#FFF7FF, #F998FF);
+    line-height: 40px;
+    border-radius: 5px;
+}
+.Sdata-holder h2{
+    text-transform: capitalize;
+    font-size: 1.4em;
+    padding: 0px 8px;
+}
+.Sdata-holder h5{
+    text-transform: capitalize;
+    font-size: 0.9em;
+    padding: 0px 8px;
+    /* font-weight: 500; */
+}
+.Sdata-holder span{
+    font-size: 0.9em;
+    padding: 0px 5px;
+    font-weight: 500;
+}
+.Sdata-holder img{
+    height: 30px;
+    width: auto;
+    background-color: white;
+    padding: 3px;
+    border-radius: 100%;
+}

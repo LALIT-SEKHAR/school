@@ -1,4 +1,4 @@
-.card-holder{
+.Tcard-holder{
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -7,67 +7,55 @@
     height: 320px;
     width: 250px;
 }
-.img-holder{
+.Timg-holder{
     width: 100%;
     height: 30%;
     display: flex;
     justify-content: center;
     position: relative;
 }
-.circle-one{
+.Tcircle-one{
     transform: translateY(40%);
-    background-color: aqua;
     border-radius: 100%;
     /* background-clip: ; */
 }
-.circle-two{
+.Tcircle-two{
     height: 100px;
     width: 100px;
     border-radius: 100%;
     overflow: hidden;
-    /* background-color: teal; */
     display: flex;
     justify-content: center;
     align-items: center;
     border-top: thin;
  
 }
-.img-holder img{
+.Timg-holder img{
     width: 100%;
     height: auto;
     transform: rotate(-45deg);
     transform: scale(1.4);
     z-index: 5;
 }
-.data-holder{
+.Tdata-holder{
     width: 100%;
     height: 70%;
-    background-image: linear-gradient(to bottom,#BFDDFF,#82C8FF);
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    line-height: 40px;
+    background-image: linear-gradient(to bottom,#BFDDFF, #82C8FF);
+    line-height: 35px;
     border-radius: 5px;
+    padding: 5px;
+    padding-top: 40px;
+    text-transform: capitalize;
 }
-/* .data-holder-circle{
-    background-color: tomato;
-    height: 110px;
-    width: 110px;
-    border-radius: 100%;
-    position: absolute;
-    transform: translateY(-140%);
-    
-
-} */
-.data-holder p{
-    float: right;
-}
-.data-holder img{
+.Tdata-holder img{
     height: 30px;
     width: auto;
     background-color: white;
-    padding: 3px;
+    padding: 2px;
     border-radius: 100%;
 }
