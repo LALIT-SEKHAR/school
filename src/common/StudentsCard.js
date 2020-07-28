@@ -5,11 +5,7 @@ const StudentsCard = (props) => {
     return (
         <div className="Scard-holder">
             <div className="Simg-holder">
-                <div className="Scircle-one">
-                    <div className="Scircle-two">
-                        <img src={props.img} alt="teacher"/>
-                    </div>
-                </div>
+                <img className="Simg" src={props.img} alt="teacher"/>
             </div>
             <div className="Sdata-holder">
                 <div className="Sdata-holder-circle"></div>

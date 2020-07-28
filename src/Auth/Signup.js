@@ -8,7 +8,7 @@ const Signup = () => {
     const [value, setvalue] = useState({
         name: '',
         email: '',
-        role: 'teacher',
+        position: 'teacher',
         password: '',
         isLoadimg: false,
         dataResived: false,
@@ -65,16 +65,21 @@ const Signup = () => {
                         value={value.password}
                         onChange={handalechange}
                     /><br/>
+                    <label className="authInputTextLable" htmlFor="type">type</label><br/>
+                    <select onChange={handalechange} name="position" className="authInput">
+                        <option>teacher</option>
+                        <option>student</option>
+                    </select><br/>
                     <span className="authSubmitSection">
                         <Link className="chengAuthLink" to="/signin">
                             already a user?
                         </Link>
-                        <button onClick={(e) => {
+                        <button className="authSubmit" onClick={(e) => {
                             e.preventDefault();
-                            const {name, email, password} = value
+                            const {name, email, password, position} = value
                             if ( name !== '' && email !== '' && password !== '' ) {
                                 setvalue({...value,dataResived: true})
-                                signup({name,email,password})
+                                signup({name, email, password, position})
                                 .then((res)=>{
                                     if (res.error) {
                                         setvalue({
@@ -95,8 +100,7 @@ const Signup = () => {
                                 .catch((err)=>{console.log("ERROR in SIGNUP",err)})
                                 setvalue({...value,dataResived: false})
                             }
-                        }} className="authSubmit"
-                        >
+                        }}>
                             {value.dataResived ? 'submiting..' : 'submit'}
                         </button>
                     </span>

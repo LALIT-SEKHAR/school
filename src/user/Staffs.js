@@ -1,19 +1,42 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Base from '../Base';
 import './css/Staffs.css';
 import TeachersCard from '../common/TeachersCard';
+// import { getAllteachers } from './helper/userHelper';
+import { API } from '../backend';
 
 const Staffs = () => {
+
+    const [value, setvalue] = useState({teachers:undefined,});
+
+    useEffect(()=> {
+        fetch(`${API}/teachers`)
+        .then((res)=>res.json())
+        .then((data)=> {
+            setvalue({teachers:data});
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    },[]);
+
     return (
         <div>
             <Base>
                 <div className="Card-Arranger">
-                    <TeachersCard
+                    {!value.teachers 
+                    ? 
+                    <h1>Loading..</h1> 
+                    : 
+                    value.teachers.map((teacher)=>{
+                        return <TeachersCard
                         img='SaratKumarBehera.jpg'
-                        name='sarat kumar behera'
+                        name={teacher.name}
                         qualification='Bsc.Bed'
                         role='(Asst.Tr)'
-                    />
+                        />
+                    })
+                    }
                 </div>
             </Base>
         </div>

@@ -12,32 +12,12 @@
     height: 30%;
     display: flex;
     justify-content: center;
-    position: relative;
-}
-.Scircle-one{
     transform: translateY(40%);
-    background-color: aqua;
-    border-radius: 100%;
-    /* background-clip: ; */
 }
-.Scircle-two{
-    height: 100px;
-    width: 100px;
-    border-radius: 100%;
-    overflow: hidden;
-    /* background-color: teal; */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: thin;
- 
-}
-.Simg-holder img{
-    width: 100%;
-    height: auto;
-    transform: rotate(-45deg);
-    transform: scale(1.4);
-    z-index: 5;
+.Simg{
+    width: auto;
+    height: 100%;
+    clip-path: circle(42% at 50% 50%);
 }
 .Sdata-holder{
     width: 100%;

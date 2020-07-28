@@ -16,13 +16,15 @@
 }
 .authimg{
     background-color: hsl(0, 0%, 100%);
-    padding: 30px;
+    padding: 3%;
     border-radius: 50px;
     box-shadow: 10px 10px 10px rgb(50, 0, 200),
                 -10px -10px 10px rgb(93, 39, 255);
     border: 10px solid rgb(64, 0, 255);
-    width: 300px;
-    height: 300px;
+    min-width: 140px;
+    min-height: 140px;
+    max-width: 270px;
+    max-height: 270px;
 }
 .inputSection{
     background-color: rgb(230, 230, 230);
@@ -35,6 +37,8 @@
     border: 10px solid rgb(230, 230, 230);
     border-radius: 20px;
     width: 300px;
+    min-width: 250px;
+    max-width: 300px;
 }
 .authheading{
     margin: 0px 0px 20px 0px;
@@ -53,6 +57,7 @@
     height: 2em;
     width: 100%;
     padding: 5px;
+    overflow: hidden;
 }
 .authSubmitSection{
     display: flex;
@@ -85,16 +90,21 @@
 @media only screen and (max-width: 800px) {
     .authSection{
         flex-direction: column;
+        height: unset;
     }
-    .imgSection,
+    .imgSection{
+        width: 100%;
+        /* margin: 20px 0px;  */
+        min-height: 50vh;
+    }
     .inputSection{
-        width: 100vw;
-        height: 70%;
+        width: 100%;
+        min-height: 50vh;
     }
     .authimg{
         padding: 20px;
-        height: 200px;
-        width: 200px;
+        height: 180px;
+        width: 180px;
     }
     .inputSection{
         height: 100%;

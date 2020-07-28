@@ -5,11 +5,7 @@ const TeachersCard = (props) => {
     return (
         <div className="Tcard-holder">
             <div className="Timg-holder">
-                <div className="Tcircle-one">
-                    <div className="Tcircle-two">
-                        <img src={props.img} alt="teacher"/>
-                    </div>
-                </div>
+                <img className="Timg" src={props.img} alt="teacher"/>
             </div>
             <div className="Tdata-holder">
                 <div className="Tdata-holder-circle"></div>
