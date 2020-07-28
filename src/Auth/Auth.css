@@ -16,11 +16,13 @@
 }
 .authimg{
     background-color: hsl(0, 0%, 100%);
-    padding: 20px;
+    padding: 30px;
     border-radius: 50px;
     box-shadow: 10px 10px 10px rgb(50, 0, 200),
                 -10px -10px 10px rgb(93, 39, 255);
     border: 10px solid rgb(64, 0, 255);
+    width: 300px;
+    height: 300px;
 }
 .inputSection{
     background-color: rgb(230, 230, 230);
@@ -89,8 +91,14 @@
         width: 100vw;
         height: 70%;
     }
+    .authimg{
+        padding: 20px;
+        height: 200px;
+        width: 200px;
+    }
     .inputSection{
         height: 100%;
+        padding: 20px;
         border-radius: 50px 50px 0px 0px;
     }
     .authForm{

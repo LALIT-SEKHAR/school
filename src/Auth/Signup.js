@@ -8,6 +8,7 @@ const Signup = () => {
     const [value, setvalue] = useState({
         name: '',
         email: '',
+        role: 'teacher',
         password: '',
         isLoadimg: false,
         dataResived: false,
@@ -32,7 +33,7 @@ const Signup = () => {
     return (
         <div className='authSection'>
             <div className="imgSection">
-                <img style={submitresult(value.isSuccess)} className="authimg" src="favicon.png" alt="Logo"/>
+                <img style={submitresult(value.isSuccess)} className="authimg" src="BrandLogo.png" alt="Logo"/>
             </div>
             <div className="inputSection">
                 <form className="authForm">

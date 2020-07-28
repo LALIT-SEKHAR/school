@@ -3,7 +3,7 @@ import './css/TeachersCard.css';
 
 const TeachersCard = (props) => {
     return (
-        <div className="Tcard-holderT">
+        <div className="Tcard-holder">
             <div className="Timg-holder">
                 <div className="Tcircle-one">
                     <div className="Tcircle-two">
