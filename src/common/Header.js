@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link , withRouter} from 'react-router-dom';
 import './css/Header.css'
 
-const Header =  ({history}) => {
+const Header =  ({history, signin}) => {
     
     const [menu, setmenu] = useState(window.innerWidth<=800 ? false : true);
     
@@ -32,6 +32,7 @@ const Header =  ({history}) => {
                                 <li><Link style={currentTab(history, '/gallery')} className="links" to='/gallery'>gallery</Link></li>
                                 <li><Link style={currentTab(history, '/about')} className="links" to='/about'>about</Link></li>
                                 <li><Link style={currentTab(history, '/contact')} className="links" to='/contact'>contact</Link></li>
+                                {signin && <li><Link style={currentTab(history, '/signin')} className="links" to='/signin'>sign in</Link></li>}
                             </ul>
                         </nav>
                     </li>

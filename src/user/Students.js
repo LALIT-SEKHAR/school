@@ -29,6 +29,7 @@ const Students = () => {
                     : 
                     value.students.map((student)=>{
                         return <StudentsCard 
+                        key={student._id}
                         img='img1.png' 
                         name={student.name}
                         class='9th'
