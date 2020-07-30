@@ -3,6 +3,8 @@ import Base from '../Base';
 import StudentsCard from '../common/StudentsCard';
 import './css/Staffs.css';
 import { API } from '../backend';
+import Loader from '../common/Loader';
+
 
 const Students = () => {
     
@@ -25,7 +27,7 @@ const Students = () => {
                 <div className="Card-Arranger">
                     {!value.students 
                     ? 
-                    <h1>Loading..</h1> 
+                    <Loader/>
                     : 
                     value.students.map((student)=>{
                         return <StudentsCard 

@@ -9,6 +9,7 @@ import Students from './user/Students';
 import Gallery from './user/Gallery';
 import About from './user/About';
 import Contact from './user/Contact';
+import StaffData from './user/StaffData';
 
 const Routes = () => {
     return(
@@ -22,6 +23,7 @@ const Routes = () => {
                 <Route exact path='/gallery' component={Gallery} />
                 <Route exact path='/about' component={About} />
                 <Route exact path='/contact' component={Contact} />
+                <Route exact path='/:id' component={StaffData} />
                 <Route component={NotFound} />
             </Switch>
         </BrowserRouter>

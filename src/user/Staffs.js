@@ -4,6 +4,8 @@ import './css/Staffs.css';
 import TeachersCard from '../common/TeachersCard';
 // import { getAllteachers } from './helper/userHelper';
 import { API } from '../backend';
+import { Link } from 'react-router-dom';
+import Loader from '../common/Loader';
 
 const Staffs = () => {
 
@@ -18,7 +20,7 @@ const Staffs = () => {
         .catch((err)=>{
             console.log(err);
         })
-    },[]);
+    },[value]);
 
     return (
         <div>
@@ -26,16 +28,17 @@ const Staffs = () => {
                 <div className="Card-Arranger">
                     {!value.teachers 
                     ? 
-                    <h1>Loading..</h1> 
+                    <Loader/>
                     : 
                     value.teachers.map((teacher)=>{
-                        return <TeachersCard
-                        key={teacher._id}
+                        return <Link key={teacher._id} to={teacher._id}>
+                        <TeachersCard
                         img='SaratKumarBehera.jpg'
                         name={teacher.name}
                         qualification='Bsc.Bed'
                         role='(Asst.Tr)'
                         />
+                        </Link>
                     })
                     }
                 </div>

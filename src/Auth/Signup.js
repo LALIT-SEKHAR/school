@@ -10,6 +10,7 @@ const Signup = () => {
         email: '',
         position: 'teacher',
         password: '',
+        qualification: '',
         isLoadimg: false,
         dataResived: false,
         isSuccess: undefined,
@@ -70,17 +71,37 @@ const Signup = () => {
                         <option>teacher</option>
                         <option>student</option>
                     </select><br/>
+                    {
+                    value.position === 'teacher' 
+                    ? 
+                    <>
+                    <label className="authInputTextLable" htmlFor="qualification">qualification</label><br/>
+                    <input 
+                        name="qualification"
+                        placeholder="Enter qualifications" 
+                        className="authInput" 
+                        type="text"
+                        value={value.qualification}
+                        onChange={handalechange}
+                    /><br/>
+                    </> 
+                    : 
+                    <>
+                    TODO:add for student
+                    </>
+                    }
                     <span className="authSubmitSection">
                         <Link className="chengAuthLink" to="/signin">
                             already a user?
                         </Link>
                         <button className="authSubmit" onClick={(e) => {
                             e.preventDefault();
-                            const {name, email, password, position} = value
+                            const {name, email, password, position, qualification} = value
                             if ( name !== '' && email !== '' && password !== '' ) {
                                 setvalue({...value,dataResived: true})
-                                signup({name, email, password, position})
+                                signup({name, email, password, position, qualification})
                                 .then((res)=>{
+                                    console.log(res);
                                     if (res.error) {
                                         setvalue({
                                             ...value,
@@ -93,6 +114,7 @@ const Signup = () => {
                                             name:'',
                                             email:'',
                                             password:'',
+                                            qualification:'',
                                             isSuccess: true,
                                         })
                                     }
