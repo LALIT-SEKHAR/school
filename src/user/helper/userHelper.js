@@ -1,7 +1,7 @@
 const { API } = require("../../backend");
 
 export const getAllteachers = () => {
-    fetch(`${API}/teachers`)
+    return fetch(`${API}/teachers`)
     .then((res)=> res.json())
     .then((data)=> {
         return data;
@@ -11,8 +11,18 @@ export const getAllteachers = () => {
     })
 }
 export const getteacher = (id) => {
-    fetch(`${API}/teacher/${id}`)
+    return fetch(`${API}/teacher/${id}`)
     .then((res)=> res.json())
+    .then((data)=> {
+        return data;
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+}
+export const getAllstudents = () => {
+    return fetch(`${API}/students`)
+    .then((res)=>res.json())
     .then((data)=> {
         return data;
     })

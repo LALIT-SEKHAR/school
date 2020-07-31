@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
-// import { getteacher } from './helper/userHelper';
-import { API } from '../backend';
+import { getteacher } from './helper/userHelper';
 import Footer from '../common/Footer';
 import Header from '../common/Header';
 import './css/StaffData.css';
@@ -14,13 +13,9 @@ function StaffData() {
     const [value, setvalue] = useState({StaffData: undefined})
 
     useEffect(()=>{
-        fetch(`${API}/teacher/${id}`)
-        .then((res)=> res.json())
-        .then((data)=> {
-            setvalue({StaffData:data});
-        })
-        .catch((err)=>{
-            console.log(err);
+        getteacher(id)
+        .then((data)=>{
+            return setvalue({StaffData:data})
         })
     },[id]);
     // console.log(value.StaffData[0].name)

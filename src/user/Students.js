@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Base from '../Base';
 import StudentsCard from '../common/StudentsCard';
 import './css/Staffs.css';
-import { API } from '../backend';
 import Loader from '../common/Loader';
+import { getAllstudents } from './helper/userHelper';
 
 
 const Students = () => {
@@ -11,15 +11,11 @@ const Students = () => {
     const [value, setvalue] = useState({students:undefined,});
 
     useEffect(()=> {
-        fetch(`${API}/students`)
-        .then((res)=>res.json())
+        getAllstudents()
         .then((data)=> {
-            setvalue({students:data});
+            return setvalue({students:data})
         })
-        .catch((err)=>{
-            console.log(err);
-        })
-    },[]);
+    },[value]);
 
     return (
         <div>

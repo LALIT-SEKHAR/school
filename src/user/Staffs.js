@@ -2,23 +2,20 @@ import React, { useState, useEffect } from 'react';
 import Base from '../Base';
 import './css/Staffs.css';
 import TeachersCard from '../common/TeachersCard';
-// import { getAllteachers } from './helper/userHelper';
-import { API } from '../backend';
+import { getAllteachers } from './helper/userHelper';
+// import { API } from '../backend';
 import { Link } from 'react-router-dom';
 import Loader from '../common/Loader';
+import { isAuthenticated } from '../Auth/helper/authHelper';
 
 const Staffs = () => {
 
     const [value, setvalue] = useState({teachers:undefined,});
 
     useEffect(()=> {
-        fetch(`${API}/teachers`)
-        .then((res)=>res.json())
-        .then((data)=> {
-            setvalue({teachers:data});
-        })
-        .catch((err)=>{
-            console.log(err);
+        getAllteachers()
+        .then((data) => {
+            return setvalue({...value, teachers:data})
         })
     },[value]);
 
@@ -31,7 +28,7 @@ const Staffs = () => {
                     <Loader/>
                     : 
                     value.teachers.map((teacher)=>{
-                        return <Link key={teacher._id} to={teacher._id}>
+                        return <Link key={teacher._id} to={isAuthenticated()?teacher._id:'staffs'}>
                         <TeachersCard
                         img='SaratKumarBehera.jpg'
                         name={teacher.name}

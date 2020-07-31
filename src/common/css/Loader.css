@@ -22,7 +22,7 @@
     align-items: center;
     animation: rotateColorChange linear 800ms infinite;
 }
-.loader img{
+.loaderimg{
     height: 50px;
     width: 50px;
     /* background-color: blue; */

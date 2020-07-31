@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { signin } from './helper/authHelper';
+import { signin, authenticate } from './helper/authHelper';
 import './Auth.css';
 
 const Signin = () => {
@@ -82,12 +82,15 @@ const Signin = () => {
                                         // wrongPassword: res.ERROR === 'User Password not match' && true,
                                     })
                                     } else {
-                                        setvalue({
-                                            ...value,
-                                            email:'',
-                                            password:'',
-                                            isSuccess: true
-                                        })
+                                        authenticate(res, ()=>{
+                                            setvalue({
+                                                ...value,
+                                                email:'',
+                                                password:'',
+                                                isSuccess: true
+                                            })
+                                        });
+                                        
                                     }
                                 })
                                 .catch((err)=>{console.log("ERROR in SIGNIN",err)})

@@ -87,7 +87,7 @@ const Signup = () => {
                     </> 
                     : 
                     <>
-                    TODO:add for student
+                    {/* TODO:add for student */}
                     </>
                     }
                     <span className="authSubmitSection">
@@ -101,7 +101,6 @@ const Signup = () => {
                                 setvalue({...value,dataResived: true})
                                 signup({name, email, password, position, qualification})
                                 .then((res)=>{
-                                    console.log(res);
                                     if (res.error) {
                                         setvalue({
                                             ...value,
