@@ -21,7 +21,7 @@ const Staffs = () => {
 
     return (
         <div>
-            <Base signin={true}>
+            <Base signin={true} addteacher={true}>
                 <div className="Card-Arranger">
                     {!value.teachers 
                     ? 
@@ -30,10 +30,10 @@ const Staffs = () => {
                     value.teachers.map((teacher)=>{
                         return <Link key={teacher._id} to={isAuthenticated()?teacher._id:'staffs'}>
                         <TeachersCard
-                        img='SaratKumarBehera.jpg'
+                        img={!teacher.profilephoto?"SaratKumarBehera.jpg":teacher.profilephoto}
                         name={teacher.name}
-                        qualification='Bsc.Bed'
-                        role='(Asst.Tr)'
+                        qualification={!teacher.qualification?"Bsc.Bed":teacher.qualification}
+                        position={!teacher.position?"(Asst.Tr)":teacher.position}
                         />
                         </Link>
                     })

@@ -10,37 +10,37 @@ function StaffData() {
 
     let { id } = useParams();
 
-    const [value, setvalue] = useState({StaffData: undefined})
+    const [value, setvalue] = useState()
 
     useEffect(()=>{
         getteacher(id)
         .then((data)=>{
-            return setvalue({StaffData:data})
+            return setvalue(data)
         })
     },[id]);
     // console.log(value.StaffData[0].name)
-
+console.log(value);
     return (
         <>
             <Header/>
                 <div className="teacherDetailSection">
-                    {!value.StaffData
+                    {!value
                     ? 
                     <Loader/>
                     : 
                     <>
                         <div className="teacherDetailData">
                             <div className="teacherDetailDataImg">
-                                <img src="SaratKumarBehera.jpg" alt="Profile"/>
+                                <img src={!value["0"].profilephoto?"SaratKumarBehera.jpg":value["0"].profilephoto} alt="Profile"/>
                             </div>
                             <div className="teacherDetailDataInfoName">
-                                <h2>{value.StaffData[0].name}</h2>
-                                <p>(asst.tr)</p>
+                                <h2>{value["0"].name}</h2>
+                                <p>{!value["0"].position?"":value["0"].position}</p>
                             </div>
                             <div className="teacherDetailDataInfo">
-                                <h4>Qualification : <span>Bsc,Bed,PGDCA in computer application</span></h4>
-                                <h4>Date of Appointment : <span>2-8-1993</span></h4>
-                                <h4>Date of Joining : <span>3-8-1993</span></h4>
+                                <h4>Qualification : <span>{!value["0"].qualification?"Bsc,Bed,PGDCA in computer application":value["0"].qualification}</span></h4>
+                                <h4>Date of Appointment : <span>{!value["0"].dateofappointment?"*-*-****":value["0"].dateofappointment}</span></h4>
+                                <h4>Date of Joining : <span>{!value["0"].dateofjoin?"*-*-****":value["0"].dateofjoin}</span></h4>
                             </div>
                         </div>
                         <div className="teacherDetailDocuments">

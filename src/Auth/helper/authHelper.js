@@ -1,15 +1,26 @@
-import { API } from "../../backend"
+import { API } from "../../backend";
 
 export const signup = (user) => {
+    const {profileimg, name, email, password, position, qualification} = user
+    const formData = new FormData();
+    // formData.append('body', user);
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('position', position);
+    formData.append('qualification', qualification);
+    formData.append('profileimg', profileimg["0"]);
+    console.log(formData);
     return fetch(`${API}/signup`, {
         method: "POST",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
+            // "Content-Type": "multipart/form-data"
         },
-        body: JSON.stringify(user)
+        body: formData
     })
     .then((res) => {
+        console.log(res);
         return res.json()
     })
     .catch((err) => {

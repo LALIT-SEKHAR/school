@@ -14,10 +14,17 @@
     justify-content: center;
     transform: translateY(40%);
 }
+/* .Timg-circle{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: red;
+    overflow: hidden;
+} */
 .Timg{
     width: auto;
     height: 100%;
-    clip-path: circle(42% at 50% 50%);
+    clip-path: circle(40% at 50% 50%);
 }
 .Tdata-holder{
     width: 100%;

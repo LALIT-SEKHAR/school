@@ -19,7 +19,7 @@ const Students = () => {
 
     return (
         <div>
-            <Base>
+            <Base addstudent={true}>
                 <div className="Card-Arranger">
                     {!value.students 
                     ? 

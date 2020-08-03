@@ -6,10 +6,11 @@ import { signup } from './helper/authHelper';
 const Signup = () => {
 
     const [value, setvalue] = useState({
-        name: '',
-        email: '',
+        profileimg:undefined,
+        name: 'kwafjri',
+        email: 'a@gmail.com',
         position: 'teacher',
-        password: '',
+        password: 'hfvy6246',
         qualification: '',
         isLoadimg: false,
         dataResived: false,
@@ -19,6 +20,11 @@ const Signup = () => {
 
     const handalechange = (e) => {
         setvalue({...value, [e.target.name] : e.target.value})
+    }
+    const formadded = (e) => {
+        setvalue({...value, [e.target.name] : e.target.files})
+        console.log(e.target.files);
+
     }
 
     const submitresult = (status) => {
@@ -66,12 +72,21 @@ const Signup = () => {
                         value={value.password}
                         onChange={handalechange}
                     /><br/>
-                    <label className="authInputTextLable" htmlFor="type">type</label><br/>
+                    <label className="authInputTextLable" htmlFor="profileimg">add profile image</label><br/>
+                    <input 
+                        name="profileimg"
+                        // className="authInput" 
+                        type="file"
+                        // value={value.password}
+                        onChange={formadded}
+                    /><br/>
+                    {/* <label className="authInputTextLable" htmlFor="type">type</label><br/>
                     <select onChange={handalechange} name="position" className="authInput">
                         <option>teacher</option>
                         <option>student</option>
-                    </select><br/>
-                    {
+                    </select><br/> */}
+                
+                    {/* {
                     value.position === 'teacher' 
                     ? 
                     <>
@@ -88,18 +103,17 @@ const Signup = () => {
                     : 
                     <>
                     {/* TODO:add for student */}
-                    </>
-                    }
+                    {/* </> */}
                     <span className="authSubmitSection">
                         <Link className="chengAuthLink" to="/signin">
                             already a user?
                         </Link>
                         <button className="authSubmit" onClick={(e) => {
                             e.preventDefault();
-                            const {name, email, password, position, qualification} = value
+                            const {profileimg, name, email, password, position, qualification} = value
                             if ( name !== '' && email !== '' && password !== '' ) {
                                 setvalue({...value,dataResived: true})
-                                signup({name, email, password, position, qualification})
+                                signup({profileimg, name, email, password, position, qualification})
                                 .then((res)=>{
                                     if (res.error) {
                                         setvalue({
