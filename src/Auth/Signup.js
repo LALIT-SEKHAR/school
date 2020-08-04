@@ -3,17 +3,22 @@ import './Auth.css';
 import { Link } from 'react-router-dom';
 import { signup } from './helper/authHelper';
 
-const Signup = () => {
+const Signup = (props) => {
 
     const [value, setvalue] = useState({
         profileimg:undefined,
-        name: 'kwafjri',
-        email: 'a@gmail.com',
-        position: 'teacher',
-        password: 'hfvy6246',
+        name: '',
+        email: '',
+        position: '',
         qualification: '',
+        dateofappointment:'',
+        dateofjoin:'',
+        classs:'',
+        batch:'',
+        bloodgroup:'',
+        role: props.formfor === 'student'? 0 : 1 ,
         isLoadimg: false,
-        dataResived: false,
+        isdataloading: false,
         isSuccess: undefined,
         datasubmitedSuccessfull:{backgroundColor:'#ffffff'},
     });
@@ -23,8 +28,6 @@ const Signup = () => {
     }
     const formadded = (e) => {
         setvalue({...value, [e.target.name] : e.target.files})
-        console.log(e.target.files);
-
     }
 
     const submitresult = (status) => {
@@ -36,7 +39,59 @@ const Signup = () => {
             return {backgroundColor:''}
         }
     }
-
+    const SubmitForm = (e) => {
+        setvalue({...value,isdataloading: true})
+        e.preventDefault();
+        const 
+            {
+            profileimg,
+            name,
+            email,
+            position,
+            qualification,
+            dateofappointment,
+            dateofjoin,
+            classs,
+            batch,
+            bloodgroup,
+            role,
+        } = value
+        if ( name !== '' && email !== '') {
+            setvalue({...value,isdataloading: true})
+            signup({
+                profileimg,
+                name,
+                email,
+                position,
+                qualification,
+                dateofappointment,
+                dateofjoin,
+                classs,
+                batch,
+                bloodgroup,
+                role,
+            })
+            .then((res)=>{
+                if (res.error) {
+                    setvalue({
+                        ...value,
+                        isSuccess: false,
+                    })
+                } else {
+                    setvalue({
+                        ...value,
+                        name:'',
+                        email:'',
+                        qualification:'',
+                        isSuccess: true,
+                    })
+                }
+            })
+            .catch((err)=>{console.log("ERROR in SIGNUP",err)})
+            setvalue({...value,isdataloading: false})
+        }
+    }
+    
     return (
         <div className='authSection'>
             <div className="imgSection">
@@ -44,7 +99,7 @@ const Signup = () => {
             </div>
             <div className="inputSection">
                 <form className="authForm">
-                    <h2 className="authheading">SIGN UP</h2>
+                    <h2 className="authheading">{`Add ${props.formfor}`}</h2>
                     <label className="authInputTextLable" htmlFor="name">name</label><br/>
                     <input 
                         name="name"
@@ -63,16 +118,79 @@ const Signup = () => {
                         value={value.email}
                         onChange={handalechange}
                     /><br/>
-                    <label className="authInputTextLable" htmlFor="password">password</label><br/>
+                    {
+                    props.formfor === 'student'
+                    ?
+                    <>
+                    <label className="authInputTextLable" htmlFor="class">class</label><br/>
                     <input 
-                        name="password"
-                        placeholder="Enter Password" 
+                        name="class"
+                        placeholder="Enter Class" 
                         className="authInput" 
-                        type="password"
-                        value={value.password}
+                        type="text"
+                        value={value.class}
                         onChange={handalechange}
                     /><br/>
-                    <label className="authInputTextLable" htmlFor="profileimg">add profile image</label><br/>
+                    <label className="authInputTextLable" htmlFor="batch">batch</label><br/>
+                    <input 
+                        name="batch"
+                        placeholder="Enter Batch" 
+                        className="authInput" 
+                        type="text"
+                        value={value.batch}
+                        onChange={handalechange}
+                    /><br/>
+                    <label className="authInputTextLable" htmlFor="bloodgroup">bloodgroup</label><br/>
+                    <input 
+                        name="bloodgroup"
+                        placeholder="Enter Blood Group" 
+                        className="authInput" 
+                        type="text"
+                        value={value.bloodgroup}
+                        onChange={handalechange}
+                    /><br/>
+                    </>
+                    :
+                    <>
+                    <label className="authInputTextLable" htmlFor="position">position</label><br/>
+                    <input 
+                        name="position"
+                        placeholder="Enter position" 
+                        className="authInput" 
+                        type="text"
+                        value={value.position}
+                        onChange={handalechange}
+                    /><br/>
+                    <label className="authInputTextLable" htmlFor="qualification">qualification</label><br/>
+                    <input 
+                        name="qualification"
+                        placeholder="Enter qualification" 
+                        className="authInput" 
+                        type="text"
+                        value={value.qualification}
+                        onChange={handalechange}
+                    /><br/>
+                    <label className="authInputTextLable" htmlFor="dateofappointment">date of appointment</label><br/>
+                    <input 
+                        name="dateofappointment"
+                        placeholder="Enter date of appointment" 
+                        className="authInput" 
+                        type="text"
+                        value={value.dateofappointment}
+                        onChange={handalechange}
+                    /><br/>
+                    <label className="authInputTextLable" htmlFor="dateofdateofjoinappointment">date of join</label><br/>
+                    <input 
+                        name="dateofjoin"
+                        placeholder="Enter date of join" 
+                        className="authInput" 
+                        type="text"
+                        value={value.dateofjoin}
+                        onChange={handalechange}
+                    /><br/>
+                    </>
+                    }
+                    <label className="authInputTextLable" htmlFor="profileimg">add profile image</label><br/><br/>
                     <input 
                         name="profileimg"
                         // className="authInput" 
@@ -80,63 +198,12 @@ const Signup = () => {
                         // value={value.password}
                         onChange={formadded}
                     /><br/>
-                    {/* <label className="authInputTextLable" htmlFor="type">type</label><br/>
-                    <select onChange={handalechange} name="position" className="authInput">
-                        <option>teacher</option>
-                        <option>student</option>
-                    </select><br/> */}
-                
-                    {/* {
-                    value.position === 'teacher' 
-                    ? 
-                    <>
-                    <label className="authInputTextLable" htmlFor="qualification">qualification</label><br/>
-                    <input 
-                        name="qualification"
-                        placeholder="Enter qualifications" 
-                        className="authInput" 
-                        type="text"
-                        value={value.qualification}
-                        onChange={handalechange}
-                    /><br/>
-                    </> 
-                    : 
-                    <>
-                    {/* TODO:add for student */}
-                    {/* </> */}
                     <span className="authSubmitSection">
-                        <Link className="chengAuthLink" to="/signin">
-                            already a user?
+                        <Link className="chengAuthLink" to={props.formfor==='student'?'/addteacher':'/addstudent'}>
+                            {props.formfor==='student'?'add teacher ?':'add student ?'}
                         </Link>
-                        <button className="authSubmit" onClick={(e) => {
-                            e.preventDefault();
-                            const {profileimg, name, email, password, position, qualification} = value
-                            if ( name !== '' && email !== '' && password !== '' ) {
-                                setvalue({...value,dataResived: true})
-                                signup({profileimg, name, email, password, position, qualification})
-                                .then((res)=>{
-                                    if (res.error) {
-                                        setvalue({
-                                            ...value,
-                                            password:'',
-                                            isSuccess: false,
-                                        })
-                                    } else {
-                                        setvalue({
-                                            ...value,
-                                            name:'',
-                                            email:'',
-                                            password:'',
-                                            qualification:'',
-                                            isSuccess: true,
-                                        })
-                                    }
-                                })
-                                .catch((err)=>{console.log("ERROR in SIGNUP",err)})
-                                setvalue({...value,dataResived: false})
-                            }
-                        }}>
-                            {value.dataResived ? 'submiting..' : 'submit'}
+                        <button className="authSubmit" onClick={SubmitForm}>
+                            {value.isdataloading ? 'submiting..' : 'submit'}
                         </button>
                     </span>
                 </form>

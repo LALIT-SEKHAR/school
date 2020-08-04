@@ -89,14 +89,13 @@
     }
     .teacherDetailData{
         width: 80%;
-        height: 70%;
-        border-radius: 5%;
+        height: 40%;
         padding: 10px;
         font-size: 0.8em;
     }
     .teacherDetailDocuments{
         width: 80%;
-        height: 95%;
+        height: 60%;
         flex-direction: column;
         margin: 20px 0px;
     }

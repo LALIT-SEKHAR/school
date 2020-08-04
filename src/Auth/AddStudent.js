@@ -1,9 +1,10 @@
 import React from 'react';
+import Signup from './Signup';
 
 const AddTeacher = () => {
     return (
         <div>
-            <h1>AddStudent</h1>
+            <Signup formfor={'student'}/>
         </div>
     );
 };

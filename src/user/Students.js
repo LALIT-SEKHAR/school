@@ -8,12 +8,12 @@ import { getAllstudents } from './helper/userHelper';
 
 const Students = () => {
     
-    const [value, setvalue] = useState({students:undefined,});
+    const [value, setvalue] = useState();
 
     useEffect(()=> {
         getAllstudents()
         .then((data)=> {
-            return setvalue({students:data})
+            return setvalue(data)
         })
     },[value]);
 
@@ -21,18 +21,19 @@ const Students = () => {
         <div>
             <Base addstudent={true}>
                 <div className="Card-Arranger">
-                    {!value.students 
+                    {!value 
                     ? 
                     <Loader/>
                     : 
-                    value.students.map((student)=>{
+                    value.map((student)=>{
+                        console.log(student)
                         return <StudentsCard 
                         key={student._id}
-                        img='img1.png' 
-                        name={student.name}
-                        class='9th'
-                        batch='2019-22'
-                        bloodGroup='A+'
+                        img={student.profilephoto?student.profilephoto:'img1.png'}
+                        name={student.name?student.name:'unNamed'}
+                        class={student.class?student.class:'9th'}
+                        batch={student.batch?student.batch:'2019-22'}
+                        bloodGroup={student.bloodgroup?student.bloodgroup:'A+'}
                     />
                     })
                     }
