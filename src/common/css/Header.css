@@ -45,6 +45,7 @@ header ul li nav ul li{
 }
 .linkSignout:hover,
 .linkSignout:active{
+    cursor: pointer;
     border-top: 2px solid transparent;
     border-bottom: 2px solid orange;
 }
@@ -88,7 +89,7 @@ header ul li nav ul li{
     }
     .links:hover,
     .links:active{
-        color: blue;
+        color: #4000FF;
         border-bottom: none;
     }
   }

@@ -15,7 +15,7 @@ const Students = () => {
         .then((data)=> {
             return setvalue(data)
         })
-    },[value]);
+    },[]);
 
     return (
         <div>
@@ -26,7 +26,6 @@ const Students = () => {
                     <Loader/>
                     : 
                     value.map((student)=>{
-                        console.log(student)
                         return <StudentsCard 
                         key={student._id}
                         img={student.profilephoto?student.profilephoto:'img1.png'}

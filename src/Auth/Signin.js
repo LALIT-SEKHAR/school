@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { signin, authenticate } from './helper/authHelper';
+import { Link, Redirect } from 'react-router-dom';
+import { signin, authenticate, isAuthenticated } from './helper/authHelper';
 import './Auth.css';
 
 const Signin = () => {
@@ -99,6 +99,7 @@ const Signin = () => {
                         }} className="authSubmit"
                         >
                             {value.dataResived ? 'submiting..' : 'submit'}
+                            {isAuthenticated() && <Redirect to="/staffs" />}
                         </button>
                     </span>
                 </form>

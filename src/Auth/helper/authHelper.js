@@ -73,7 +73,7 @@ export const signout = (next) => {
         localStorage.removeItem("jwt")
         next();
         return fetch(`${API}/signout`)
-        .then((res)=> console.log("Signout Successfull"))
+        .then((res)=> alert("Signout Successfull"))
         .catch((err)=> console.log(err))
     }
 }

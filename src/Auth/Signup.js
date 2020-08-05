@@ -119,8 +119,8 @@ const Signup = (props) => {
                         onChange={handalechange}
                     /><br/>
                     {
-                    props.formfor === 'student'
-                    ?
+                    props.formfor === 'student' 
+                    ? 
                     <>
                     <label className="authInputTextLable" htmlFor="class">class</label><br/>
                     <input 
@@ -149,8 +149,18 @@ const Signup = (props) => {
                         value={value.bloodgroup}
                         onChange={handalechange}
                     /><br/>
-                    </>
-                    :
+                    <label className="authInputTextLable" htmlFor="profileimg">add profile image</label><br/><br/>
+                    <input 
+                        name="profileimg"
+                        // className="authInput" 
+                        type="file"
+                        // value={value.password}
+                        onChange={formadded}
+                    /><br/>
+                    </>   
+                    : 
+                    props.formfor === 'teacher' 
+                    && 
                     <>
                     <label className="authInputTextLable" htmlFor="position">position</label><br/>
                     <input 
@@ -188,8 +198,6 @@ const Signup = (props) => {
                         value={value.dateofjoin}
                         onChange={handalechange}
                     /><br/>
-                    </>
-                    }
                     <label className="authInputTextLable" htmlFor="profileimg">add profile image</label><br/><br/>
                     <input 
                         name="profileimg"
@@ -198,6 +206,9 @@ const Signup = (props) => {
                         // value={value.password}
                         onChange={formadded}
                     /><br/>
+                    </>
+                    }
+                    {/* TODO: add a password input for signup */}
                     <span className="authSubmitSection">
                         <Link className="chengAuthLink" to={props.formfor==='student'?'/addteacher':'/addstudent'}>
                             {props.formfor==='student'?'add teacher ?':'add student ?'}
