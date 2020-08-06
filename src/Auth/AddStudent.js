@@ -1,10 +1,10 @@
 import React from 'react';
-import Signup from './Signup';
+import BrhsForm from './BrhsForm';
 
 const AddTeacher = () => {
     return (
         <div>
-            <Signup formfor={'student'}/>
+            <BrhsForm formfor={'student'}/>
         </div>
     );
 };

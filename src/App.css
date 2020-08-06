@@ -10,3 +10,30 @@
 /* .App{
   width: 100vw;
 } */
+input[type=file]{
+  border: 1px solid black;
+  background-color: #e4dff5;
+  outline-color: #4000FF;
+  border-radius: 2px;
+  /* height: 30px; */
+  width: 100%;
+  padding: 5px;
+  text-align: center;
+}
+input[type=file]::after {
+  content: ' Add image hear';
+  color: #4000FF;
+  text-align: center;
+}
+input[type=file]::before{
+  content: '+ ';
+  color: red;
+  font-size: 1.2em;
+  text-align: center;
+  font-weight: bolder;
+  /* font-size: ; */
+}
+::-webkit-file-upload-button{
+  background-color: thistle;
+  display: none;
+}

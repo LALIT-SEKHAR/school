@@ -5,6 +5,7 @@ export const signup = (user) => {
         profileimg,
         name,
         email,
+        password,
         position,
         qualification,
         dateofappointment,
@@ -18,6 +19,7 @@ export const signup = (user) => {
     // formData.append('body', user);
     formData.append('name', name);
     formData.append('email', email);
+    formData.append('password', password);
     formData.append('position', position);
     formData.append('qualification', qualification);
     formData.append('dateofappointment', dateofappointment);
