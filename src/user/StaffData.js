@@ -9,7 +9,6 @@ import Loader from '../common/Loader';
 function StaffData() {
 
     let { id } = useParams();
-
     const [value, setvalue] = useState({
         Staffdatas: undefined, 
         StaffDocuments: undefined,
@@ -24,7 +23,7 @@ function StaffData() {
             return setvalue({...value,Staffdatas:data})
         })
         .catch((err)=> console.log(err))
-    },[id]);
+    },[id,value]);
     // console.log(value.StaffData[0].name)
     // const getthedates = () => {
     //     const date = new Date()

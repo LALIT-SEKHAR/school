@@ -6,7 +6,8 @@ import './css/Staffs.css';
 const Gallery = () => {
 
     const [value, setvalue] = useState({
-        images:undefined
+        images:undefined,
+        refresh: undefined
     });
 
     useEffect(()=> {
@@ -17,7 +18,7 @@ const Gallery = () => {
         .catch((err) => {
             console.log(err)
         })
-    },[]);
+    },[value]);
 
     return (
         <div>
