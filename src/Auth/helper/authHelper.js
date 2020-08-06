@@ -88,3 +88,23 @@ export const isAuthenticated = () => {
         return false;
     }
 }
+
+export const submitImage = (user) => {
+    const formData = new FormData();
+    formData.append('image', user["0"]);
+    return fetch(`${API}/galary`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            // "Content-Type": "multipart/form-data"
+        },
+        body: formData
+    })
+    .then((res) => {
+        // console.log(res);
+        return res.json()
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+}

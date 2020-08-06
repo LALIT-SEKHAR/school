@@ -6,6 +6,7 @@ import Signin from './Auth/Signin';
 import Signup from './Auth/Signup';
 import AddTeacher from './Auth/AddTeacher';
 import AddStudent from './Auth/AddStudent';
+import AddImage from './Auth/AddImage';
 import Staffs from './user/Staffs';
 import Students from './user/Students';
 import Gallery from './user/Gallery';
@@ -22,6 +23,7 @@ const Routes = () => {
                 <Route exact path='/signup' component={Signup} />
                 <Route exact path='/addteacher' component={AddTeacher} />
                 <Route exact path='/addstudent' component={AddStudent} />
+                <Route exact path='/addimage' component={AddImage} />
                 <Route exact path='/staffs' component={Staffs} />
                 <Route exact path='/students' component={Students} />
                 <Route exact path='/gallery' component={Gallery} />

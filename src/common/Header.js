@@ -3,7 +3,7 @@ import { Link , withRouter} from 'react-router-dom';
 import './css/Header.css'
 import { isAuthenticated, signout } from '../Auth/helper/authHelper';
 
-const Header =  ({history, signin, addteacher, addstudent}) => {
+const Header =  ({history, signin, addteacher, addstudent, addimage}) => {
     
     const [menu, setmenu] = useState(window.innerWidth<=800 ? false : true);
     
@@ -42,6 +42,7 @@ const Header =  ({history, signin, addteacher, addstudent}) => {
                                 {signin && !isAuthenticated() && <li><Link style={currentTab(history, '/signin')} className="links" to='/signin'>sign in</Link></li>}
                                 {addteacher && isAuthenticated() && <li><Link style={currentTab(history, '/addteacher')} className="links" to='/addteacher'>add teacher</Link></li>}
                                 {addstudent && isAuthenticated() && <li><Link style={currentTab(history, '/addstudent')} className="links" to='/addstudent'>add student</Link></li>}
+                                {addimage && isAuthenticated() && <li><Link style={currentTab(history, '/addimage')} className="links" to='/addimage'>add image</Link></li>}
                                 {isAuthenticated() && <li style={{color:'orange'}} className="links linkSignout" onClick={DoSignout}>Sign out</li>}
                             </ul>
                         </nav>

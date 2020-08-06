@@ -63,3 +63,14 @@ export const getDocuments = (id) => {
         console.log(err);
     })
 }
+
+export const getimages = () => {
+    return fetch(`${API}/galary`)
+    .then((res)=> res.json())
+    .then((data)=> {
+        return data;
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+}

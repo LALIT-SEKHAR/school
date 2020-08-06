@@ -6,3 +6,15 @@
 a{
     color: black;
 }
+.Gallerydisplayimg{
+    border-radius: 20px;
+    padding: 10px;
+    width: 400px;
+    height: auto;
+    transition: ease-in-out 200ms;
+    /* box-sizing: 50px 50px 50px black; */
+}
+.Gallerydisplayimg:hover,
+.Gallerydisplayimg:active{
+    transform: scale(0.9);
+}
