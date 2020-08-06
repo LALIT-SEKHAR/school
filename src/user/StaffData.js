@@ -24,7 +24,7 @@ function StaffData() {
             return setvalue({...value,Staffdatas:data})
         })
         .catch((err)=> console.log(err))
-    },[]);
+    },[id]);
     // console.log(value.StaffData[0].name)
     // const getthedates = () => {
     //     const date = new Date()

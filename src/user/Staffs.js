@@ -17,7 +17,7 @@ const Staffs = () => {
         .then((data) => {
             return setvalue({...value, teachers:data})
         })
-    },[]);
+    },[value]);
 
     return (
         <div>

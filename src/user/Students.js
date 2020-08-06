@@ -15,7 +15,7 @@ const Students = () => {
         .then((data)=> {
             return setvalue(data)
         })
-    },[]);
+    },[value]);
 
     return (
         <div>
