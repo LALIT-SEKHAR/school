@@ -67,7 +67,7 @@ const Signin = () => {
                     /><br/>
                     <span className="authSubmitSection">
                         <Link className="chengAuthLink" to="/signup">
-                            not an user?
+                            not a user?
                         </Link>
                         <button onClick={(e) => {
                             e.preventDefault();

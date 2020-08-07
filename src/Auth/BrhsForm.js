@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Auth.css';
 import { Link, Redirect } from 'react-router-dom';
-import { signup } from './helper/authHelper';
+import { signup, adduser } from './helper/authHelper';
 import { isAuthenticated } from './helper/authHelper';
 
 const Signup = (props) => {
@@ -10,7 +10,7 @@ const Signup = (props) => {
         profileimg: undefined,
         name: '',
         email: '',
-        password: undefined,
+        password: '',
         position: '',
         qualification: '',
         dateofappointment:'',
@@ -18,7 +18,7 @@ const Signup = (props) => {
         classs:'',
         batch:'',
         bloodgroup:'',
-        role: props.formfor === 'student' ? 0 : 'teacher' ? 1 : -1 ,
+        role: props.formfor === 'student' ? 0 : props.formfor === 'teacher' ? 1 : -1 ,
         isLoadimg: false,
         isdataloading: false,
         isSuccess: undefined,
@@ -42,7 +42,6 @@ const Signup = (props) => {
         }
     }
     const SubmitForm = (e) => {
-        setvalue({...value,isdataloading: true})
         e.preventDefault();
         const 
             {
@@ -61,11 +60,20 @@ const Signup = (props) => {
         } = value
         if ( name !== '' && email !== '') {
             setvalue({...value,isdataloading: true})
+            props.formfor === 'signup'
+            ?
             signup({
-                profileimg,
                 name,
                 email,
                 password,
+                role,
+            })
+            :
+            adduser({
+                profileimg,
+                name,
+                email,
+                // password,
                 position,
                 qualification,
                 dateofappointment,
@@ -157,9 +165,7 @@ const Signup = (props) => {
                     <label className="authInputTextLable" htmlFor="profileimg">add profile image</label><br/><br/>
                     <input 
                         name="profileimg"
-                        // className="authInput" 
                         type="file"
-                        // value={value.password}
                         onChange={formadded}
                     /><br/>
                     </>   
@@ -220,17 +226,17 @@ const Signup = (props) => {
                         <label className="authInputTextLable" htmlFor="password">password</label><br/>
                         <input 
                             name="password"
-                            placeholder="Enter password" 
+                            placeholder="Enter password"
                             className="authInput" 
                             type="password"
-                            value={value.email}
+                            value={value.password}
                             onChange={handalechange}
                         /><br/>
                         </>
                     }
                     <span className="authSubmitSection">
-                        <Link className="chengAuthLink" to={props.formfor==='student'?'/addteacher':'/addstudent'}>
-                            {props.formfor==='student'?'add teacher ?':'add student ?'}
+                        <Link className="chengAuthLink" to={props.formfor==='student'?'/addteacher':props.formfor==='teacher'?'/addstudent':'/signin'}>
+                            {props.formfor==='student'?'add teacher ?':props.formfor==='teacher'?'add student ?':'alrady a user ?'}
                         </Link>
                         <button className="authSubmit" onClick={SubmitForm}>
                             {value.isdataloading ? 'submiting..' : 'submit'}
@@ -238,7 +244,7 @@ const Signup = (props) => {
                             ? 
                             isAuthenticated() && <Redirect to="/students" />
                             : 
-                            'teacher' 
+                            props.formfor === 'teacher' 
                             ? 
                             isAuthenticated() && <Redirect to="/staffs" />
                             : 

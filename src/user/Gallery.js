@@ -7,7 +7,6 @@ const Gallery = () => {
 
     const [value, setvalue] = useState({
         images:undefined,
-        refresh: undefined
     });
 
     useEffect(()=> {

@@ -1,6 +1,6 @@
 import { API } from "../../backend";
 
-export const signup = (user) => {
+export const adduser = (user) => {
     const {
         profileimg,
         name,
@@ -29,7 +29,7 @@ export const signup = (user) => {
     formData.append('bloodgroup', bloodgroup);
     formData.append('role', role);
     formData.append('profileimg', profileimg["0"]);
-    return fetch(`${API}/signup`, {
+    return fetch(`${API}/adduser`, {
         method: "POST",
         headers: {
             Accept: "application/json",
@@ -39,6 +39,23 @@ export const signup = (user) => {
     })
     .then((res) => {
         // console.log(res);
+        return res.json()
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+}
+
+export const signup = (user) => {
+    return fetch(`${API}/signup`, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(user)
+    })
+    .then((res) => {
         return res.json()
     })
     .catch((err) => {
